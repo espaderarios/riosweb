@@ -1,0 +1,30 @@
+{
+  "name": "business-game",
+  "version": "1.0.0",
+  "description": "A comprehensive business simulation game with crypto investments",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "debug": "node --inspect server.js",
+    "debug-brk": "node --inspect-brk server.js"
+  },
+  "keywords": [
+    "game",
+    "business",
+    "simulation",
+    "crypto",
+    "investment"
+  ],
+  "author": "Business Game Developer",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

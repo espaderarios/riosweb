@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Empire - Build Your Fortune</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="time">02:00</div>
+            <div class="status-icons">
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Tab -->
+            <div class="tab-content active" id="home-tab">
+                <!-- Dashboard Section -->
+                <section class="dashboard">
+                    <div class="dashboard-header">
+                        <h2>Dashboard</h2>
+                        <button class="see-all-btn">See All</button>
+                    </div>
+                    <div class="balance-card">
+                        <div class="balance-label">Your Balance</div>
+                        <div class="balance-amount" id="balance">$59,500.00</div>
+                        <div class="action-buttons">
+                            <button class="transfer-btn" id="transferBtn">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>TRANSFER</span>
+                            </button>
+                            <button class="topup-btn" id="topupBtn">
+                                <i class="fas fa-upload"></i>
+                                <span>TOP UP</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section class="statistics">
+                    <h3>Earnings</h3>
+                    <div class="chart-container">
+                        <div class="bar-chart" id="barChart">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>$0</span>
+                            <span>$250</span>
+                            <span>$500</span>
+                            <span>$750</span>
+                            <span>$1,000</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Prestige Section -->
+                <section class="prestige-section">
+                    <h3>Prestige System</h3>
+                    <div class="prestige-info">
+                        <div class="prestige-stats">
+                            <div class="prestige-stat">
+                                <span class="stat-label">Current Prestige:</span>
+                                <span class="stat-value" id="currentPrestige">0</span>
+                            </div>
+                            <div class="prestige-stat">
+                                <span class="stat-label">Prestige Bonus:</span>
+                                <span class="stat-value" id="prestigeBonus">x1.0</span>
+                            </div>
+                            <div class="prestige-stat">
+                                <span class="stat-label">Next Prestige:</span>
+                                <span class="stat-value" id="nextPrestige">Reach $1B</span>
+                            </div>
+                        </div>
+                        <div class="prestige-rewards">
+                            <h4>Prestige Rewards:</h4>
+                            <div class="reward-list">
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 1</span>
+                                    <span class="reward-desc">x2 Income Multiplier</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 2</span>
+                                    <span class="reward-desc">x3 Income Multiplier + $1M Bonus</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 3</span>
+                                    <span class="reward-desc">x5 Income Multiplier + Special Badge</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 5</span>
+                                    <span class="reward-desc">x10 Income Multiplier + Exclusive Assets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="prestige-btn" id="prestigeBtn" onclick="showPrestigeModal()">
+                            <span class="btn-icon">⭐</span>
+                            <span class="btn-text">PRESTIGE</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Business Ventures Section -->
+                <section class="business-ventures">
+                    <h3>Business Ventures</h3>
+                    <div class="venture-grid">
+                        <div class="venture-card" data-venture="lemonade">
+                            <div class="venture-icon">🍋</div>
+                            <div class="venture-name">Lemonade Stand</div>
+                            <div class="venture-cost">$500</div>
+                            <div class="venture-income">+$5/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('lemonade')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('lemonade')" style="display: none;">Upgrade $1,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('lemonade')" style="display: none;">Manager $2,500</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="kiosk">
+                            <div class="venture-icon">🏪</div>
+                            <div class="venture-name">Kiosk</div>
+                            <div class="venture-cost">$2,000</div>
+                            <div class="venture-income">+$15/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('kiosk')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('kiosk')" style="display: none;">Upgrade $4,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('kiosk')" style="display: none;">Manager $10,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="foodtruck">
+                            <div class="venture-icon">🚐</div>
+                            <div class="venture-name">Food Truck</div>
+                            <div class="venture-cost">$50,000</div>
+                            <div class="venture-income">+$250/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('foodtruck')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('foodtruck')" style="display: none;">Upgrade $100,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('foodtruck')" style="display: none;">Manager $250,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="smallstore">
+                            <div class="venture-icon">🏪</div>
+                            <div class="venture-name">Small Store</div>
+                            <div class="venture-cost">$100,000</div>
+                            <div class="venture-income">+$400/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('smallstore')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('smallstore')" style="display: none;">Upgrade $200,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('smallstore')" style="display: none;">Manager $500,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="boutique">
+                            <div class="venture-icon">👗</div>
+                            <div class="venture-name">Boutique</div>
+                            <div class="venture-cost">$150,000</div>
+                            <div class="venture-income">+$600/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('boutique')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('boutique')" style="display: none;">Upgrade $300,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('boutique')" style="display: none;">Manager $750,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="restaurant">
+                            <div class="venture-icon">🍽️</div>
+                            <div class="venture-name">Restaurant</div>
+                            <div class="venture-cost">$300,000</div>
+                            <div class="venture-income">+$1,200/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('restaurant')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('restaurant')" style="display: none;">Upgrade $600,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('restaurant')" style="display: none;">Manager $1,500,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="cafe">
+                            <div class="venture-icon">☕</div>
+                            <div class="venture-name">Cafe</div>
+                            <div class="venture-cost">$600,000</div>
+                            <div class="venture-income">+$2,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('cafe')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('cafe')" style="display: none;">Upgrade $1,200,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('cafe')" style="display: none;">Manager $3,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="bar">
+                            <div class="venture-icon">🍺</div>
+                            <div class="venture-name">Bar</div>
+                            <div class="venture-cost">$900,000</div>
+                            <div class="venture-income">+$3,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('bar')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('bar')" style="display: none;">Upgrade $1,800,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('bar')" style="display: none;">Manager $4,500,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="salon">
+                            <div class="venture-icon">💇</div>
+                            <div class="venture-name">Salon</div>
+                            <div class="venture-cost">$1,200,000</div>
+                            <div class="venture-income">+$4,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('salon')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('salon')" style="display: none;">Upgrade $2,400,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('salon')" style="display: none;">Manager $6,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="gym">
+                            <div class="venture-icon">💪</div>
+                            <div class="venture-name">Gym</div>
+                            <div class="venture-cost">$1,500,000</div>
+                            <div class="venture-income">+$4,500/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('gym')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('gym')" style="display: none;">Upgrade $3,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('gym')" style="display: none;">Manager $7,500,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="hotel">
+                            <div class="venture-icon">🏨</div>
+                            <div class="venture-name">Hotel</div>
+                            <div class="venture-cost">$3,500,000</div>
+                            <div class="venture-income">+$9,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('hotel')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('hotel')" style="display: none;">Upgrade $7,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('hotel')" style="display: none;">Manager $17,500,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="nightclub">
+                            <div class="venture-icon">🎵</div>
+                            <div class="venture-name">Nightclub</div>
+                            <div class="venture-cost">$6,000,000</div>
+                            <div class="venture-income">+$15,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('nightclub')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('nightclub')" style="display: none;">Upgrade $12,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('nightclub')" style="display: none;">Manager $30,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="mall">
+                            <div class="venture-icon">🛍️</div>
+                            <div class="venture-name">Shopping Mall</div>
+                            <div class="venture-cost">$10,000,000</div>
+                            <div class="venture-income">+$25,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('mall')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('mall')" style="display: none;">Upgrade $20,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('mall')" style="display: none;">Manager $50,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="casino">
+                            <div class="venture-icon">🎰</div>
+                            <div class="venture-name">Casino</div>
+                            <div class="venture-cost">$15,000,000</div>
+                            <div class="venture-income">+$35,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('casino')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('casino')" style="display: none;">Upgrade $30,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('casino')" style="display: none;">Manager $75,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="techstartup">
+                            <div class="venture-icon">💻</div>
+                            <div class="venture-name">Tech Startup</div>
+                            <div class="venture-cost">$25,000,000</div>
+                            <div class="venture-income">+$60,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('techstartup')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('techstartup')" style="display: none;">Upgrade $50,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('techstartup')" style="display: none;">Manager $125,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="crypto">
+                            <div class="venture-icon">₿</div>
+                            <div class="venture-name">Crypto Exchange</div>
+                            <div class="venture-cost">$50,000,000</div>
+                            <div class="venture-income">+$120,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('crypto')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('crypto')" style="display: none;">Upgrade $100,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('crypto')" style="display: none;">Manager $250,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="realestate">
+                            <div class="venture-icon">🏢</div>
+                            <div class="venture-name">Real Estate</div>
+                            <div class="venture-cost">$100,000,000</div>
+                            <div class="venture-income">+$220,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('realestate')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('realestate')" style="display: none;">Upgrade $200,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('realestate')" style="display: none;">Manager $500,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="stockmarket">
+                            <div class="venture-icon">📈</div>
+                            <div class="venture-name">Stock Market</div>
+                            <div class="venture-cost">$200,000,000</div>
+                            <div class="venture-income">+$400,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('stockmarket')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('stockmarket')" style="display: none;">Upgrade $400,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('stockmarket')" style="display: none;">Manager $1,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="airport">
+                            <div class="venture-icon">✈️</div>
+                            <div class="venture-name">Airport</div>
+                            <div class="venture-cost">$500,000,000</div>
+                            <div class="venture-income">+$900,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('airport')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('airport')" style="display: none;">Upgrade $1,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('airport')" style="display: none;">Manager $2,500,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="spaceline">
+                            <div class="venture-icon">🚀</div>
+                            <div class="venture-name">Space Line</div>
+                            <div class="venture-cost">$750,000,000</div>
+                            <div class="venture-income">+$1,200,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('spaceline')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('spaceline')" style="display: none;">Upgrade $1,500,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('spaceline')" style="display: none;">Manager $3,750,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="satellite">
+                            <div class="venture-icon">🛰️</div>
+                            <div class="venture-name">Satellite Network</div>
+                            <div class="venture-cost">$1,000,000,000</div>
+                            <div class="venture-income">+$1,500,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('satellite')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('satellite')" style="display: none;">Upgrade $2,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('satellite')" style="display: none;">Manager $5,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="megacorp">
+                            <div class="venture-icon">🏢</div>
+                            <div class="venture-name">Mega Corporation</div>
+                            <div class="venture-cost">$2,500,000,000</div>
+                            <div class="venture-income">+$3,500,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('megacorp')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('megacorp')" style="display: none;">Upgrade $5,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('megacorp')" style="display: none;">Manager $12,500,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="globalbank">
+                            <div class="venture-icon">🏦</div>
+                            <div class="venture-name">Global Bank</div>
+                            <div class="venture-cost">$5,000,000,000</div>
+                            <div class="venture-income">+$7,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('globalbank')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('globalbank')" style="display: none;">Upgrade $10,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('globalbank')" style="display: none;">Manager $25,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="spacemining">
+                            <div class="venture-icon">⛏️</div>
+                            <div class="venture-name">Space Mining</div>
+                            <div class="venture-cost">$10,000,000,000</div>
+                            <div class="venture-income">+$14,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('spacemining')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('spacemining')" style="display: none;">Upgrade $20,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('spacemining')" style="display: none;">Manager $50,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="quantumtech">
+                            <div class="venture-icon">⚛️</div>
+                            <div class="venture-name">Quantum Tech</div>
+                            <div class="venture-cost">$25,000,000,000</div>
+                            <div class="venture-income">+$35,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('quantumtech')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('quantumtech')" style="display: none;">Upgrade $50,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('quantumtech')" style="display: none;">Manager $125,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="interstellar">
+                            <div class="venture-icon">🌌</div>
+                            <div class="venture-name">Interstellar</div>
+                            <div class="venture-cost">$50,000,000,000</div>
+                            <div class="venture-income">+$70,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('interstellar')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('interstellar')" style="display: none;">Upgrade $100,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('interstellar')" style="display: none;">Manager $250,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="dysonsphere">
+                            <div class="venture-icon">☀️</div>
+                            <div class="venture-name">Dyson Sphere</div>
+                            <div class="venture-cost">$100,000,000,000</div>
+                            <div class="venture-income">+$140,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('dysonsphere')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('dysonsphere')" style="display: none;">Upgrade $200,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('dysonsphere')" style="display: none;">Manager $500,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="galaxywide">
+                            <div class="venture-icon">🌌</div>
+                            <div class="venture-name">Galaxy Wide</div>
+                            <div class="venture-cost">$250,000,000,000</div>
+                            <div class="venture-income">+$350,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('galaxywide')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('galaxywide')" style="display: none;">Upgrade $500,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('galaxywide')" style="display: none;">Manager $1,250,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="universal">
+                            <div class="venture-icon">🌍</div>
+                            <div class="venture-name">Universal</div>
+                            <div class="venture-cost">$500,000,000,000</div>
+                            <div class="venture-income">+$700,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('universal')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('universal')" style="display: none;">Upgrade $1,000,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('universal')" style="display: none;">Manager $2,500,000,000,000</button>
+                            </div>
+                        </div>
+                        <div class="venture-card" data-venture="multiverse">
+                            <div class="venture-icon">🌠</div>
+                            <div class="venture-name">Multiverse</div>
+                            <div class="venture-cost">$1,000,000,000,000</div>
+                            <div class="venture-income">+$1,400,000,000/min</div>
+                            <div class="venture-level">Level <span class="level-value">1</span></div>
+                            <div class="venture-actions">
+                                <button class="venture-btn buy-btn" onclick="purchaseVenture('multiverse')">Buy</button>
+                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('multiverse')" style="display: none;">Upgrade $2,000,000,000,000</button>
+                                <button class="venture-btn manager-btn" onclick="hireManager('multiverse')" style="display: none;">Manager $5,000,000,000,000</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Assets Section -->
+                <section class="assets">
+                    <h3>Your Assets</h3>
+                    <div class="asset-grid">
+                        <div class="asset-card" id="houseAsset">
+                            <div class="asset-icon">🏠</div>
+                            <div class="asset-name">House</div>
+                            <div class="asset-level">Level 1</div>
+                            <div class="asset-upgrade">Upgrade $2,000</div>
+                        </div>
+                        <div class="asset-card" id="clothesAsset">
+                            <div class="asset-icon">👔</div>
+                            <div class="asset-name">Wardrobe</div>
+                            <div class="asset-level">Basic</div>
+                            <div class="asset-upgrade">Upgrade $500</div>
+                        </div>
+                        <div class="asset-card" id="carAsset">
+                            <div class="asset-icon">🚗</div>
+                            <div class="asset-name">Car</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $10,000</div>
+                        </div>
+                        <div class="asset-card" id="watchAsset">
+                            <div class="asset-icon">⌚</div>
+                            <div class="asset-name">Watch</div>
+                            <div class="asset-level">Basic</div>
+                            <div class="asset-upgrade">Upgrade $1,000</div>
+                        </div>
+                        <div class="asset-card" id="planeAsset">
+                            <div class="asset-icon">✈️</div>
+                            <div class="asset-name">Plane</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $500,000</div>
+                        </div>
+                        <div class="asset-card" id="yachtAsset">
+                            <div class="asset-icon">🛥️</div>
+                            <div class="asset-name">Yacht</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $250,000</div>
+                        </div>
+                        <div class="asset-card" id="jewelryAsset">
+                            <div class="asset-icon">💎</div>
+                            <div class="asset-name">Jewelry</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $5,000</div>
+                        </div>
+                        <div class="asset-card" id="artAsset">
+                            <div class="asset-icon">🖼️</div>
+                            <div class="asset-name">Art</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $10,000</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collections Section -->
+                <section class="collections">
+                    <h3>Premium Collections</h3>
+                    
+                    <!-- Car Collection -->
+                    <div class="collection-section">
+                        <h4>🏎️ Car Collection</h4>
+                        <div class="collection-grid" id="carCollection">
+                            <div class="collection-item locked" data-car="Used Sedan">
+                                <div class="collection-icon">🚗</div>
+                                <div class="collection-name">Used Sedan</div>
+                                <div class="collection-cost">$10,000</div>
+                                <div class="collection-income">+$50/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Sports Car">
+                                <div class="collection-icon">🏎️</div>
+                                <div class="collection-name">Sports Car</div>
+                                <div class="collection-cost">$50,000</div>
+                                <div class="collection-income">+$200/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Luxury SUV">
+                                <div class="collection-icon">🚙</div>
+                                <div class="collection-name">Luxury SUV</div>
+                                <div class="collection-cost">$80,000</div>
+                                <div class="collection-income">+$300/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Supercar">
+                                <div class="collection-icon">🏁</div>
+                                <div class="collection-name">Supercar</div>
+                                <div class="collection-cost">$200,000</div>
+                                <div class="collection-income">+$600/min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plane Collection -->
+                    <div class="collection-section">
+                        <h4>✈️ Plane Collection</h4>
+                        <div class="collection-grid" id="planeCollection">
+                            <div class="collection-item locked" data-plane="Private Jet">
+                                <div class="collection-icon">✈️</div>
+                                <div class="collection-name">Private Jet</div>
+                                <div class="collection-cost">$500,000</div>
+                                <div class="collection-income">+$2,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Business Jet">
+                                <div class="collection-icon">💺</div>
+                                <div class="collection-name">Business Jet</div>
+                                <div class="collection-cost">$2,000,000</div>
+                                <div class="collection-income">+$6,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Luxury Jet">
+                                <div class="collection-icon">🛩️</div>
+                                <div class="collection-name">Luxury Jet</div>
+                                <div class="collection-cost">$10,000,000</div>
+                                <div class="collection-income">+$25,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Private Airliner">
+                                <div class="collection-icon">✈️</div>
+                                <div class="collection-name">Private Airliner</div>
+                                <div class="collection-cost">$50,000,000</div>
+                                <div class="collection-income">+$100,000/min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Luxury Collection -->
+                    <div class="collection-section">
+                        <h4>💎 Luxury Collection</h4>
+                        <div class="collection-grid" id="luxuryCollection">
+                            <div class="collection-item locked" data-luxury="Diamond Ring">
+                                <div class="collection-icon">💍</div>
+                                <div class="collection-name">Diamond Ring</div>
+                                <div class="collection-cost">$5,000</div>
+                                <div class="collection-income">+$20/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Gold Watch">
+                                <div class="collection-icon">⌚</div>
+                                <div class="collection-name">Gold Watch</div>
+                                <div class="collection-cost">$15,000</div>
+                                <div class="collection-income">+$50/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Rare Painting">
+                                <div class="collection-icon">🖼️</div>
+                                <div class="collection-name">Rare Painting</div>
+                                <div class="collection-cost">$50,000</div>
+                                <div class="collection-income">+$200/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Yacht">
+                                <div class="collection-icon">🛥️</div>
+                                <div class="collection-name">Yacht</div>
+                                <div class="collection-cost">$250,000</div>
+                                <div class="collection-income">+$1,000/min</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage Progress -->
+                <section class="stage-progress">
+                    <h3>Current Stage: <span id="currentStage">Beginner</span></h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="stage-info">
+                        <span id="stageProgress">$30,000 / $100,000</span>
+                        <span id="nextReward">Next: House Upgrade</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Life Simulator Tab -->
+            <div class="tab-content" id="life-tab">
+                <section class="life-section">
+                    <h2>Life Simulator</h2>
+                    
+                    <!-- City Selection -->
+                    <div class="city-selector">
+                        <h3>Current City: <span id="currentCityName">New York</span></h3>
+                        <div class="city-grid">
+                            <div class="city-card" data-city="New York">
+                                <div class="city-icon">🏙️</div>
+                                <div class="city-name">New York</div>
+                                <div class="city-bonus">1.0x Income</div>
+                            </div>
+                            <div class="city-card locked" data-city="Los Angeles">
+                                <div class="city-icon">🌴</div>
+                                <div class="city-name">Los Angeles</div>
+                                <div class="city-requirement">Unlock at Entrepreneur</div>
+                            </div>
+                            <div class="city-card locked" data-city="Chicago">
+                                <div class="city-icon">🏗️</div>
+                                <div class="city-name">Chicago</div>
+                                <div class="city-requirement">Unlock at Business Owner</div>
+                            </div>
+                            <div class="city-card locked" data-city="Miami">
+                                <div class="city-icon">🏖️</div>
+                                <div class="city-name">Miami</div>
+                                <div class="city-requirement">Unlock at Tycoon</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Life Stats -->
+                    <div class="life-stats">
+                        <h3>Your Life Stats</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-icon">❤️</div>
+                                <div class="stat-name">Health</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill health-fill"></div>
+                                </div>
+                                <div class="stat-value" id="healthValue">80</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">😊</div>
+                                <div class="stat-name">Happiness</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill happiness-fill"></div>
+                                </div>
+                                <div class="stat-value" id="happinessValue">70</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-name">Social</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill social-fill"></div>
+                                </div>
+                                <div class="stat-value" id="socialValue">60</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">🧠</div>
+                                <div class="stat-name">Intelligence</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill intelligence-fill"></div>
+                                </div>
+                                <div class="stat-value" id="intelligenceValue">75</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Life Activities -->
+                    <div class="life-activities">
+                        <h3>Daily Activities</h3>
+                        <div class="activity-grid">
+                            <div class="activity-card" data-activity="Exercise">
+                                <div class="activity-icon">🏃</div>
+                                <div class="activity-name">Exercise</div>
+                                <div class="activity-cost">Free</div>
+                                <div class="activity-effect">+10 Health, +5 Happiness</div>
+                            </div>
+                            <div class="activity-card" data-activity="Meditation">
+                                <div class="activity-icon">🧘</div>
+                                <div class="activity-name">Meditation</div>
+                                <div class="activity-cost">Free</div>
+                                <div class="activity-effect">+8 Happiness, +3 Intelligence</div>
+                            </div>
+                            <div class="activity-card" data-activity="Study Course">
+                                <div class="activity-icon">📚</div>
+                                <div class="activity-name">Study Course</div>
+                                <div class="activity-cost">$500</div>
+                                <div class="activity-effect">+15 Intelligence</div>
+                            </div>
+                            <div class="activity-card" data-activity="Party">
+                                <div class="activity-icon">🎉</div>
+                                <div class="activity-name">Party</div>
+                                <div class="activity-cost">$200</div>
+                                <div class="activity-effect">+12 Happiness, +10 Social</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Love Life Tab -->
+            <div class="tab-content" id="love-tab">
+                <h2>Love Life</h2>
+                
+                <!-- Relationship Status -->
+                <section class="relationship-status">
+                    <h3>Relationship Status</h3>
+                    <div class="relationship-info">
+                        <div class="partner-info">
+                            <div class="partner-avatar">❤️</div>
+                            <div class="partner-details">
+                                <div class="partner-name" id="partnerName">Single</div>
+                                <div class="relationship-level" id="relationshipLevel">No relationship</div>
+                            </div>
+                        </div>
+                        <div class="relationship-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Status:</span>
+                                <span class="stat-value" id="relationshipStatus">Single</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Dates:</span>
+                                <span class="stat-value" id="dateCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Potential Partners -->
+                <section class="potential-partners">
+                    <h3>Potential Partners</h3>
+                    <div class="partners-grid" id="partnersGrid">
+                        <div class="partner-card" data-partner="Alex">
+                            <div class="partner-icon">💼</div>
+                            <div class="partner-name">Alex</div>
+                            <div class="partner-personality">Ambitious</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                        <div class="partner-card" data-partner="Sarah">
+                            <div class="partner-icon">🎨</div>
+                            <div class="partner-name">Sarah</div>
+                            <div class="partner-personality">Creative</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                        <div class="partner-card" data-partner="Mike">
+                            <div class="partner-icon">🏔️</div>
+                            <div class="partner-name">Mike</div>
+                            <div class="partner-personality">Adventurous</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                        <div class="partner-card" data-partner="Emma">
+                            <div class="partner-icon">📖</div>
+                            <div class="partner-name">Emma</div>
+                            <div class="partner-personality">Intellectual</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                        <div class="partner-card" data-partner="David">
+                            <div class="partner-icon">😊</div>
+                            <div class="partner-name">David</div>
+                            <div class="partner-personality">Charming</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                        <div class="partner-card" data-partner="Lisa">
+                            <div class="partner-icon">🎭</div>
+                            <div class="partner-name">Lisa</div>
+                            <div class="partner-personality">Fun-loving</div>
+                            <div class="meet-btn">Meet</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Date Activities -->
+                <section class="date-activities">
+                    <h3>Date Activities</h3>
+                    <div class="date-grid" id="dateGrid">
+                        <div class="date-card" data-date="Coffee Date">
+                            <div class="date-icon">☕</div>
+                            <div class="date-name">Coffee Date</div>
+                            <div class="date-cost">$500</div>
+                            <div class="date-effect">+5 Relationship</div>
+                        </div>
+                        <div class="date-card" data-date="Dinner Date">
+                            <div class="date-icon">🍽️</div>
+                            <div class="date-name">Dinner Date</div>
+                            <div class="date-cost">$2,000</div>
+                            <div class="date-effect">+15 Relationship</div>
+                        </div>
+                        <div class="date-card" data-date="Movie Night">
+                            <div class="date-icon">🎬</div>
+                            <div class="date-name">Movie Night</div>
+                            <div class="date-cost">$1,000</div>
+                            <div class="date-effect">+8 Relationship</div>
+                        </div>
+                        <div class="date-card" data-date="Shopping Spree">
+                            <div class="date-icon">🛍️</div>
+                            <div class="date-name">Shopping Spree</div>
+                            <div class="date-cost">$5,000</div>
+                            <div class="date-effect">+20 Relationship</div>
+                        </div>
+                        <div class="date-card" data-date="Weekend Trip">
+                            <div class="date-icon">✈️</div>
+                            <div class="date-name">Weekend Trip</div>
+                            <div class="date-cost">$10,000</div>
+                            <div class="date-effect">+30 Relationship</div>
+                        </div>
+                        <div class="date-card" data-date="Concert">
+                            <div class="date-icon">🎵</div>
+                            <div class="date-name">Concert</div>
+                            <div class="date-cost">$3,000</div>
+                            <div class="date-effect">+12 Relationship</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="invest-tab">
+                <h2>Investment Hub</h2>
+                
+                <!-- Crypto Balance -->
+                <section class="crypto-balance">
+                    <h3>Crypto Portfolio</h3>
+                    <div class="crypto-info">
+                        <div class="crypto-total">
+                            <div class="crypto-label">Total Crypto Value</div>
+                            <div class="crypto-amount" id="cryptoBalance">0 BTC</div>
+                            <div class="crypto-usd" id="cryptoUSD">$0</div>
+                        </div>
+                        <div class="crypto-conversion">
+                            <div class="conversion-rate">1 BTC = $45,000</div>
+                            <button class="transfer-btn" id="cryptoTransferBtn">Transfer to Crypto</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Investment Options -->
+                <section class="investment-options">
+                    <h3>Investment Options</h3>
+                    <div class="investment-grid">
+                        <div class="investment-card" data-investment="bitcoin">
+                            <div class="investment-icon">₿</div>
+                            <div class="investment-name">Bitcoin</div>
+                            <div class="investment-price">$45,000</div>
+                            <div class="investment-change">+5.2%</div>
+                            <div class="investment-amount">0 BTC</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="ethereum">
+                            <div class="investment-icon">Ξ</div>
+                            <div class="investment-name">Ethereum</div>
+                            <div class="investment-price">$3,000</div>
+                            <div class="investment-change">+8.7%</div>
+                            <div class="investment-amount">0 ETH</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="dogecoin">
+                            <div class="investment-icon">🐕</div>
+                            <div class="investment-name">Dogecoin</div>
+                            <div class="investment-price">$0.08</div>
+                            <div class="investment-change">+12.3%</div>
+                            <div class="investment-amount">0 DOGE</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="nft">
+                            <div class="investment-icon">🎨</div>
+                            <div class="investment-name">NFT Collection</div>
+                            <div class="investment-price">$5,000</div>
+                            <div class="investment-change">+15.8%</div>
+                            <div class="investment-amount">0 NFT</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="cardano">
+                            <div class="investment-icon">₳</div>
+                            <div class="investment-name">Cardano</div>
+                            <div class="investment-price">$0.45</div>
+                            <div class="investment-change">-3.2%</div>
+                            <div class="investment-amount">0 ADA</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="polkadot">
+                            <div class="investment-icon">●</div>
+                            <div class="investment-name">Polkadot</div>
+                            <div class="investment-price">$7.50</div>
+                            <div class="investment-change">+4.1%</div>
+                            <div class="investment-amount">0 DOT</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="chainlink">
+                            <div class="investment-icon">🔗</div>
+                            <div class="investment-name">Chainlink</div>
+                            <div class="investment-price">$14.20</div>
+                            <div class="investment-change">-1.8%</div>
+                            <div class="investment-amount">0 LINK</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="solana">
+                            <div class="investment-icon">◎</div>
+                            <div class="investment-name">Solana</div>
+                            <div class="investment-price">$98.50</div>
+                            <div class="investment-change">+18.5%</div>
+                            <div class="investment-amount">0 SOL</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="avalanche">
+                            <div class="investment-icon">🔺</div>
+                            <div class="investment-name">Avalanche</div>
+                            <div class="investment-price">$35.80</div>
+                            <div class="investment-change">+6.7%</div>
+                            <div class="investment-amount">0 AVAX</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                        <div class="investment-card" data-investment="polygon">
+                            <div class="investment-icon">⬡</div>
+                            <div class="investment-name">Polygon</div>
+                            <div class="investment-price">$0.85</div>
+                            <div class="investment-change">-5.4%</div>
+                            <div class="investment-amount">0 MATIC</div>
+                            <button class="invest-btn">Buy</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Crypto Holdings -->
+                <section class="crypto-holdings">
+                    <div class="section-header">
+                        <h3>Your Holdings</h3>
+                        <button class="view-graph-btn" onclick="showCryptoGraph()">📈 View Graphs</button>
+                    </div>
+                    <div class="holdings-grid" id="holdingsGrid">
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">₿</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Bitcoin</div>
+                                    <div class="holding-amount">0 BTC</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('bitcoin')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">Ξ</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Ethereum</div>
+                                    <div class="holding-amount">0 ETH</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('ethereum')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">🐕</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Dogecoin</div>
+                                    <div class="holding-amount">0 DOGE</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('dogecoin')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">🎨</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">NFT Collection</div>
+                                    <div class="holding-amount">0 NFT</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('nft')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">₳</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Cardano</div>
+                                    <div class="holding-amount">0 ADA</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('cardano')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">●</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Polkadot</div>
+                                    <div class="holding-amount">0 DOT</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('polkadot')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">🔗</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Chainlink</div>
+                                    <div class="holding-amount">0 LINK</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('chainlink')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">◎</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Solana</div>
+                                    <div class="holding-amount">0 SOL</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('solana')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">🔺</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Avalanche</div>
+                                    <div class="holding-amount">0 AVAX</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('avalanche')">Withdraw</button>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-details">
+                                <div class="holding-icon">⬡</div>
+                                <div class="holding-info">
+                                    <div class="holding-name">Polygon</div>
+                                    <div class="holding-amount">0 MATIC</div>
+                                    <div class="holding-value">$0</div>
+                                </div>
+                            </div>
+                            <button class="withdraw-btn" onclick="withdrawCrypto('polygon')">Withdraw</button>
+                        </div>
+                    </div>
+                    <div class="withdraw-all-section">
+                        <button class="withdraw-all-btn" onclick="withdrawAllCrypto()">
+                            <i class="fas fa-coins"></i>
+                            <span>Withdraw All Crypto</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Stock Market -->
+                <section class="stock-market">
+                    <h3>Stock Market</h3>
+                    <div class="disclaimer">
+                        <p>⚠️ <strong>Legal Notice:</strong> All companies, brands, and products in this game are fictional and not affiliated with any real-world entities.</p>
+                    </div>
+                    <div class="stock-grid" id="stockGrid">
+                        <div class="stock-card" data-stock="nykor">
+                            <div class="stock-header">
+                                <div class="stock-icon">👟</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">Nykor Athletics</div>
+                                    <div class="stock-sector">Apparel</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$120.00</div>
+                            <div class="stock-change positive">+2.4%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="foodchain">
+                            <div class="stock-header">
+                                <div class="stock-icon">🍔</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">FoodChain Inc</div>
+                                    <div class="stock-sector">Food & Beverage</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$65.25</div>
+                            <div class="stock-change positive">+0.00%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="healthplus">
+                            <div class="stock-header">
+                                <div class="stock-icon">⚽</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">HealthPlus Medical</div>
+                                    <div class="stock-sector">Healthcare</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$180.90</div>
+                            <div class="stock-change positive">+0.00%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="automax">
+                            <div class="stock-header">
+                                <div class="stock-icon">🐆</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">AutoMax Motors</div>
+                                    <div class="stock-sector">Automotive</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$95.40</div>
+                            <div class="stock-change positive">+0.00%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="retailpro">
+                            <div class="stock-header">
+                                <div class="stock-icon">🍟</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">RetailPro Group</div>
+                                    <div class="stock-sector">Retail</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$45.80</div>
+                            <div class="stock-change positive">+0.00%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="techflow">
+                            <div class="stock-header">
+                                <div class="stock-icon">☕</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">TechFlow Solutions</div>
+                                    <div class="stock-sector">Technology</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$250.50</div>
+                            <div class="stock-change positive">+0.00%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="peartech">
+                            <div class="stock-header">
+                                <div class="stock-icon">📱</div>
+                                <div class="stock-info">
+                                    <div class="stock-name">PearTech</div>
+                                    <div class="stock-sector">Technology</div>
+                                </div>
+                            </div>
+                            <div class="stock-price">$250.00</div>
+                            <div class="stock-change positive">+4.1%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="cryptofin">
+                            <div class="stock-icon">🏦</div>
+                            <div class="stock-info">
+                                <div class="stock-name">CryptoFin Bank</div>
+                                <div class="stock-sector">Finance</div>
+                            </div>
+                            <div class="stock-price">$320.15</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="spacex">
+                            <div class="stock-icon">🚀</div>
+                            <div class="stock-info">
+                                <div class="stock-name">SpaceX Ventures</div>
+                                <div class="stock-sector">Aerospace</div>
+                            </div>
+                            <div class="stock-price">$450.00</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="biogen">
+                            <div class="stock-icon">🧬</div>
+                            <div class="stock-info">
+                                <div class="stock-name">BioGen Labs</div>
+                                <div class="stock-sector">Biotechnology</div>
+                            </div>
+                            <div class="stock-price">$275.60</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="gaming">
+                            <div class="stock-icon">🎮</div>
+                            <div class="stock-info">
+                                <div class="stock-name">GamingWorld Inc</div>
+                                <div class="stock-sector">Entertainment</div>
+                            </div>
+                            <div class="stock-price">$125.30</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="realest">
+                            <div class="stock-icon">🏢</div>
+                            <div class="stock-info">
+                                <div class="stock-name">RealEstate Plus</div>
+                                <div class="stock-sector">Real Estate</div>
+                            </div>
+                            <div class="stock-price">$85.20</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="logistic">
+                            <div class="stock-icon">🚚</div>
+                            <div class="stock-info">
+                                <div class="stock-name">LogiFast Solutions</div>
+                                <div class="stock-sector">Logistics</div>
+                            </div>
+                            <div class="stock-price">$95.75</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="telecom">
+                            <div class="stock-icon">📡</div>
+                            <div class="stock-info">
+                                <div class="stock-name">TeleCom Networks</div>
+                                <div class="stock-sector">Telecommunications</div>
+                            </div>
+                            <div class="stock-price">$155.85</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="mining">
+                            <div class="stock-icon">⛏️</div>
+                            <div class="stock-info">
+                                <div class="stock-name">MiningCorp Industries</div>
+                                <div class="stock-sector">Mining</div>
+                            </div>
+                            <div class="stock-price">$75.40</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                        <div class="stock-card" data-stock="education">
+                            <div class="stock-icon">🎓</div>
+                            <div class="stock-info">
+                                <div class="stock-name">EduTech Academy</div>
+                                <div class="stock-sector">Education</div>
+                            </div>
+                            <div class="stock-price">$65.90</div>
+                            <div class="stock-change positive">+0.0%</div>
+                            <div class="stock-shares">0 shares</div>
+                            <button class="stock-buy-btn">Buy</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Market Stats -->
+                <section class="market-stats">
+                    <h3>Market Overview</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">24h Volume</div>
+                            <div class="stat-value">$2.5B</div>
+                            <div class="stat-change positive">+3.2%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Market Cap</div>
+                            <div class="stat-value">$850B</div>
+                            <div class="stat-change positive">+1.8%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Fear & Greed</div>
+                            <div class="stat-value">72</div>
+                            <div class="stat-change positive">Greed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Your Profit</div>
+                            <div class="stat-value" id="cryptoProfit">$0</div>
+                            <div class="stat-change" id="cryptoProfitChange">0%</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="saved-tab">
+                <section class="saved-section">
+                    <h3>Your Achievements</h3>
+                    <div class="saved-grid">
+                        <div class="saved-item">
+                            <div class="saved-icon">🚗</div>
+                            <h4>Sports Car</h4>
+                            <p>Unlock at Business Owner level</p>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-icon">✈️</div>
+                            <h4>Private Jet</h4>
+                            <p>Unlock at Magnate level</p>
+                        </div>
+                        <div class="saved-item">
+                            <div class="saved-icon">🏝️</div>
+                            <h4>Private Island</h4>
+                            <p>Unlock at Legend level</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-page="home" aria-label="Home">
+                <i class="fas fa-home"></i>
+            </button>
+            <button class="nav-btn" data-page="life" aria-label="Life">
+                <i class="fas fa-user"></i>
+            </button>
+            <button class="nav-btn center-btn" id="mainActionBtn" aria-label="Invest">
+                <i class="fas fa-rocket"></i>
+            </button>
+            <button class="nav-btn" data-page="love" aria-label="Love">
+                <i class="fas fa-heart"></i>
+            </button>
+            <button class="nav-btn" data-page="saved" aria-label="Saved">
+                <i class="fas fa-bookmark"></i>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <!-- Reward Modal -->
+    <div class="modal" id="rewardModal">
+        <div class="modal-content">
+            <h2>🎉 Achievement Unlocked!</h2>
+            <div class="reward-content">
+                <div class="reward-icon" id="rewardIcon">🏠</div>
+                <div class="reward-text">
+                    <h3 id="rewardTitle">House Upgraded!</h3>
+                    <p id="rewardDescription">Your house has been upgraded to the next level!</p>
+                </div>
+            </div>
+            <button class="claim-btn" id="claimReward">Claim Reward</button>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div class="modal" id="transferModal">
+        <div class="modal-content">
+            <h2>Transfer Funds</h2>
+            <div class="transfer-form">
+                <div class="balance-info">
+                    <span>Available Balance:</span>
+                    <span id="transferBalance">$0</span>
+                </div>
+                <div class="input-group">
+                    <label for="transferAmount">Amount ($)</label>
+                    <input type="number" id="transferAmount" placeholder="Enter amount" min="1">
+                </div>
+                <div class="conversion-info">
+                    <span>You will receive:</span>
+                    <span id="cryptoConversion">0 BTC</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="cancel-btn" onclick="hideModal('transfer')">Cancel</button>
+                    <button class="confirm-btn" onclick="confirmTransfer()">Transfer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Modal -->
+    <div class="modal" id="investmentModal">
+        <div class="modal-content">
+            <h2>Invest in Crypto</h2>
+            <div class="investment-form">
+                <div class="crypto-details">
+                    <div class="crypto-icon" id="investmentCryptoIcon">₿</div>
+                    <div class="crypto-info-text">
+                        <h3 id="investmentCryptoName">Bitcoin</h3>
+                        <p id="investmentCryptoPrice">$45,000</p>
+                        <span id="investmentCryptoChange" class="price-change positive">+5.2%</span>
+                    </div>
+                </div>
+                <div class="balance-info">
+                    <span>Available Balance:</span>
+                    <span id="investmentBalance">$0</span>
+                </div>
+                <div class="input-group">
+                    <label for="investmentAmount">Amount ($)</label>
+                    <input type="number" id="investmentAmount" placeholder="Enter amount" min="1">
+                </div>
+                <div class="conversion-info">
+                    <span>You will receive:</span>
+                    <span id="investmentConversion">0 BTC</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="cancel-btn" onclick="hideModal('investment')">Cancel</button>
+                    <button class="confirm-btn" onclick="confirmInvestment()">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div class="modal" id="withdrawModal">
+        <div class="modal-content">
+            <h2>Withdraw Crypto</h2>
+            <div class="withdraw-form">
+                <div class="crypto-details">
+                    <div class="crypto-icon" id="withdrawCryptoIcon">₿</div>
+                    <div class="crypto-info-text">
+                        <h3 id="withdrawCryptoName">Bitcoin</h3>
+                        <p id="withdrawCryptoPrice">$45,000</p>
+                        <span id="withdrawCryptoChange" class="price-change positive">+5.2%</span>
+                    </div>
+                </div>
+                <div class="withdraw-info">
+                    <div class="info-row">
+                        <span>Available Amount:</span>
+                        <span id="withdrawCryptoAmount">0 BTC</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Current Value:</span>
+                        <span id="withdrawCryptoValue">$0</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Total Invested:</span>
+                        <span id="withdrawCryptoInvested">$0</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Profit/Loss:</span>
+                        <span id="withdrawCryptoProfit" class="profit-positive">$0</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="withdrawAmount">Amount to Withdraw</label>
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount" min="0" step="0.000001">
+                </div>
+                <div class="conversion-info">
+                    <span>You will receive:</span>
+                    <span id="withdrawConversion">$0</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="cancel-btn" onclick="hideModal('withdraw')">Cancel</button>
+                    <button class="confirm-btn" onclick="confirmWithdrawal()">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Graph Modal -->
+    <div class="modal" id="cryptoGraphModal">
+        <div class="modal-content graph-modal">
+            <div class="graph-header">
+                <h2>Crypto Price History</h2>
+                <button class="close-btn" onclick="hideModal('cryptoGraph')">✕</button>
+            </div>
+            <div class="crypto-selector">
+                <label for="cryptoSelect">Select Cryptocurrency:</label>
+                <select id="cryptoSelect" onchange="updateCryptoGraph()">
+                    <option value="bitcoin">Bitcoin (BTC)</option>
+                    <option value="ethereum">Ethereum (ETH)</option>
+                    <option value="dogecoin">Dogecoin (DOGE)</option>
+                    <option value="nft">NFT Collection</option>
+                    <option value="cardano">Cardano (ADA)</option>
+                    <option value="polkadot">Polkadot (DOT)</option>
+                    <option value="chainlink">Chainlink (LINK)</option>
+                    <option value="solana">Solana (SOL)</option>
+                    <option value="avalanche">Avalanche (AVAX)</option>
+                    <option value="polygon">Polygon (MATIC)</option>
+                </select>
+            </div>
+            <div class="graph-container">
+                <canvas id="cryptoChart" width="800" height="400"></canvas>
+            </div>
+            <div class="graph-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Current Price:</span>
+                    <span class="stat-value" id="graphCurrentPrice">$0.00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">24h Change:</span>
+                    <span class="stat-value" id="graphChange">0.00%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">24h High:</span>
+                    <span class="stat-value" id="graphHigh">$0.00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">24h Low:</span>
+                    <span class="stat-value" id="graphLow">$0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Trade Modal -->
+    <div class="modal" id="stockTradeModal">
+        <div class="modal-content">
+            <h2 id="stockTradeTitle">Buy Stock</h2>
+            <div class="stock-trade-form">
+                <div class="stock-details">
+                    <div class="stock-icon" id="tradeStockIcon">👟</div>
+                    <div class="stock-info-text">
+                        <h3 id="tradeStockName">Nykor Athletics</h3>
+                        <p id="tradeStockPrice">$120.00</p>
+                        <span id="tradeStockChange" class="price-change positive">+2.4%</span>
+                    </div>
+                </div>
+                <div class="balance-info">
+                    <span>Available Balance:</span>
+                    <span id="stockTradeBalance">$0</span>
+                </div>
+                <div class="shares-info">
+                    <span>Current Shares:</span>
+                    <span id="stockTradeShares">0</span>
+                </div>
+                <div class="input-group">
+                    <label for="stockTradeAmount">Number of Shares</label>
+                    <input type="number" id="stockTradeAmount" placeholder="Enter shares" min="1" step="1">
+                </div>
+                <div class="conversion-info">
+                    <span>Total Cost:</span>
+                    <span id="stockTradeConversion">$0</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="cancel-btn" onclick="hideModal('stockTrade')">Cancel</button>
+                    <button class="confirm-btn" id="stockTradeConfirmBtn">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Back Gesture Indicator -->
+    <div class="back-gesture-indicator" id="backGestureIndicator">    </div>
+
+    <!-- Prestige Modal -->
+    <div class="modal" id="prestigeModal">
+        <div class="modal-content prestige-modal">
+            <div class="modal-header">
+                <h2>⭐ Prestige Reset</h2>
+                <button class="close-btn" onclick="hideModal('prestige')">✕</button>
+            </div>
+            <div class="prestige-content">
+                <div class="prestige-warning">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-text">
+                        <h3>Are you ready to prestige?</h3>
+                        <p>Prestiging will reset your progress but grant you permanent bonuses!</p>
+                    </div>
+                </div>
+                
+                <div class="prestige-details">
+                    <div class="current-progress">
+                        <h4>Your Current Progress</h4>
+                        <div class="progress-item">
+                            <span>Total Earnings:</span>
+                            <span id="prestigeTotalEarnings">$0</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Income/Minute:</span>
+                            <span id="prestigeIncome">$0</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Current Stage:</span>
+                            <span id="prestigeStage">Beginner</span>
+                        </div>
+                    </div>
+                    
+                    <div class="prestige-benefits">
+                        <h4>You Will Receive</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎯</span>
+                            <span class="benefit-text">Prestige Points: <span id="prestigePointsGain">+1</span></span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <span class="benefit-text">Income Multiplier: <span id="prestigeMultiplierGain">x2</span></span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎁</span>
+                            <span class="benefit-text">Starting Bonus: <span id="prestigeStartingBonus">$10,000</span></span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🏆</span>
+                            <span class="benefit-text">Prestige Badge: <span id="prestigeBadge">Bronze</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="prestige-confirmation">
+                        <div class="confirmation-checkbox">
+                            <input type="checkbox" id="prestigeConfirm">
+                            <label for="prestigeConfirm">I understand that my progress will be reset</label>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="cancel-btn" onclick="hideModal('prestige')">Cancel</button>
+                            <button class="confirm-btn prestige-confirm-btn" id="confirmPrestigeBtn" disabled onclick="confirmPrestige()">
+                                Confirm Prestige
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
