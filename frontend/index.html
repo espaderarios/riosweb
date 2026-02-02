@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiosWeb Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top-bar">
+    <h1>RiosWeb Builder</h1>
+    <div class="user-session" id="userSession">
+      <form id="authForm" class="auth-form">
+        <input type="text" id="usernameInput" placeholder="username" aria-label="username" required>
+        <input type="password" id="passwordInput" placeholder="password" aria-label="password" required>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel panel-left">
+      <section class="panel-section">
+        <h2>Templates</h2>
+        <p class="hint">Pick a starting layout</p>
+        <div id="templateList" class="template-list" role="list"></div>
+      </section>
+
+      <section class="panel-section">
+        <h2>Site Settings</h2>
+        <form id="siteSettingsForm" class="site-settings">
+          <label for="webnameInput">Webname</label>
+          <input id="webnameInput" name="webname" type="text" pattern="[a-z0-9-]{3,24}" required placeholder="my-portfolio">
+
+          <label for="siteTitleInput">Site Title</label>
+          <input id="siteTitleInput" name="title" type="text" required placeholder="My Awesome Page">
+
+          <label for="accentColorInput">Accent Color</label>
+          <input id="accentColorInput" name="accentColor" type="color" value="#1d4ed8">
+
+          <button type="submit">Apply Settings</button>
+        </form>
+      </section>
+    </aside>
+
+    <section class="panel panel-center">
+      <section class="panel-section">
+        <h2>Template Fields</h2>
+        <form id="fieldEditor" class="field-editor"></form>
+      </section>
+    </section>
+
+    <section class="panel panel-right">
+      <section class="panel-section">
+        <h2>Live Preview</h2>
+        <div id="preview" class="preview" aria-live="polite"></div>
+      </section>
+
+      <section class="panel-section">
+        <h2>Publish</h2>
+        <div class="publish">
+          <p id="publishStatus">Sign in and fill out your site to publish.</p>
+          <button id="publishButton" type="button" disabled>Publish</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Demo mode: data stays in your browser.</small>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

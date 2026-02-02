@@ -1,0 +1,253 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.4;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #111827, #1f2937);
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.top-bar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.auth-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.user-chip button {
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(248, 250, 252, 0.12);
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.user-chip button:hover {
+  background: rgba(248, 250, 252, 0.22);
+}
+
+.auth-form input,
+.auth-form button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(30, 41, 59, 0.9);
+  color: inherit;
+}
+
+.auth-form button {
+  cursor: pointer;
+  border-color: transparent;
+  background: #2563eb;
+  transition: background 0.2s ease;
+}
+
+.auth-form button:hover {
+  background: #1d4ed8;
+}
+
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr 420px;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-section {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+}
+
+.panel-section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.hint {
+  margin: 0 0 0.75rem;
+  opacity: 0.7;
+}
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.template-card {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(30, 41, 59, 0.7);
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+}
+
+.template-card.active {
+  border-color: #6366f1;
+  background: rgba(79, 70, 229, 0.15);
+}
+
+.template-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.template-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.site-settings,
+.field-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.site-settings label,
+.field-editor label {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.site-settings input,
+.field-editor input,
+.field-editor textarea,
+.field-editor select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 0.75rem;
+  background: rgba(30, 41, 59, 0.8);
+  color: inherit;
+}
+
+.site-settings button,
+.publish button {
+  padding: 0.7rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: linear-gradient(120deg, #6366f1, #38bdf8);
+  color: #f8fafc;
+  cursor: pointer;
+  font-weight: 600;
+  transition: filter 0.2s ease;
+}
+
+.site-settings button:disabled,
+.publish button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.site-settings button:hover:not(:disabled),
+.publish button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.preview {
+  min-height: 320px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+}
+
+.preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.publish p {
+  margin: 0 0 0.75rem;
+}
+
+.footer {
+  padding: 0.75rem 1.5rem 1.25rem;
+  opacity: 0.6;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: 280px 1fr 320px;
+  }
+}
+
+@media (max-width: 960px) {
+  body {
+    background: #0f172a;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-right {
+    order: 3;
+  }
+
+  .panel-left {
+    order: 1;
+  }
+
+  .panel-center {
+    order: 2;
+  }
+}
